@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        faceDirectionX = Input.GetAxis("Horizontal");
+        faceDirectionX = SimpleInput.GetAxis("Horizontal");
         HandleMovement();
         updateAnimState();
         if (Input.GetButtonDown("Jump"))
