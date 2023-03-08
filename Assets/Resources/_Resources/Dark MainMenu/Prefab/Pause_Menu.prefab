@@ -3138,7 +3138,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 81689293776916064}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: UnityEngine.AudioListener, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 0
         m_Arguments:
@@ -6334,7 +6334,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114972873734588868}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SetSfxVolume
         m_Mode: 0
         m_Arguments:
@@ -6437,7 +6437,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114972873734588868}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
