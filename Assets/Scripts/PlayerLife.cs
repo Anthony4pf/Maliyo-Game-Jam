@@ -15,7 +15,8 @@ public class PlayerLife : MonoBehaviour
 
     [SerializeField] private Slider healthSlider;
     private int playerHealth = 3;
-    private int damageAmt = 1;   
+    private int damageAmt = 1;
+    [SerializeField] private GameObject fallDetector;   
     public UnityEvent OnPlayerDeath; 
 
     private void Start()
@@ -30,6 +31,11 @@ public class PlayerLife : MonoBehaviour
         healthSlider.value = playerHealth;
     }
 
+    private void Update()
+    {
+        fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y);
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Trap"))
@@ -40,6 +46,7 @@ public class PlayerLife : MonoBehaviour
             if (playerHealth <= 0)
             {
                 OnPlayerDeath.Invoke();
+                AudioManager.instance.Play("Respawn");
             }
             else
             {
@@ -66,6 +73,7 @@ public class PlayerLife : MonoBehaviour
     IEnumerator RestartLevel()
     {
         yield return new WaitForSeconds(3.0f);
+        AudioManager.instance.Play("Respawn");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -81,6 +89,7 @@ public class PlayerLife : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
 
+        AudioManager.instance.Play("Respawn");
         transform.position = respawnPoint;
         rb.bodyType = RigidbodyType2D.Dynamic;
         sprite.enabled = true;

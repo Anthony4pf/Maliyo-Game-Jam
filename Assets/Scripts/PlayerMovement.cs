@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Animator anim;
 
-    //[SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private LayerMask jumpableGround;
     private float faceDirectionX;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         faceDirectionX = SimpleInput.GetAxis("Horizontal");
         HandleMovement();
         updateAnimState();
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isGrounded())
         {
             AudioManager.instance.Play("Jump");
             rb.velocity = new Vector3(rb.velocity.x, jumpForce);
@@ -44,7 +44,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+        if (isGrounded())
+        {
+            AudioManager.instance.Play("Jump");
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+        }
     }
 
     private void updateAnimState()
@@ -77,5 +81,9 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetInteger("state", (int)state);
 
+    }
+    private bool isGrounded()
+    {
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 }
