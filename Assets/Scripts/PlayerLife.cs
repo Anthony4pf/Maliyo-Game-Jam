@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-using TMPro;
+using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -11,10 +11,11 @@ public class PlayerLife : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
 
-    private Transform playerRespawnPoint;
-    [SerializeField] private TextMeshProUGUI playerHealthText;
-    [SerializeField] private int playerHealth = 3;
-    private int damageAmt = 1;    
+    private Vector2 respawnPoint;
+
+    [SerializeField] private Slider healthSlider;
+    private int playerHealth = 3;
+    private int damageAmt = 1;   
     public UnityEvent OnPlayerDeath; 
 
     private void Start()
@@ -22,7 +23,11 @@ public class PlayerLife : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        playerHealthText.text = playerHealth.ToString();
+
+        respawnPoint = transform.position;
+
+        healthSlider.maxValue = playerHealth;
+        healthSlider.value = playerHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -30,7 +35,8 @@ public class PlayerLife : MonoBehaviour
         if(other.gameObject.CompareTag("Trap"))
         {
             playerHealth -= damageAmt;
-            playerHealthText.text = playerHealth.ToString();
+            healthSlider.value = playerHealth;
+
             if (playerHealth <= 0)
             {
                 OnPlayerDeath.Invoke();
@@ -40,6 +46,14 @@ public class PlayerLife : MonoBehaviour
                 RespawnAtCheckpoint();
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Checkpoint"))
+        {
+            respawnPoint = transform.position;
+        }    
     }
     public void Die()
     {
@@ -53,6 +67,7 @@ public class PlayerLife : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void RespawnAtCheckpoint()
     {
         rb.bodyType = RigidbodyType2D.Static;
@@ -63,8 +78,9 @@ public class PlayerLife : MonoBehaviour
 
     IEnumerator RespawnCoroutine()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.0f);
 
+        transform.position = respawnPoint;
         rb.bodyType = RigidbodyType2D.Dynamic;
         sprite.enabled = true;
     }
