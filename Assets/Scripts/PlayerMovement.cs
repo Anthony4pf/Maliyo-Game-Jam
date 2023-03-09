@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         updateAnimState();
         if (Input.GetButtonDown("Jump"))
         {
+            AudioManager.instance.Play("Jump");
             rb.velocity = new Vector3(rb.velocity.x, jumpForce);
         }
 

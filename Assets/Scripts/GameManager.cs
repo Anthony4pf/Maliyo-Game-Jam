@@ -1,11 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static int collectable;
     public GameObject pauseMenuScreen;
+
+    [SerializeField] private Text collectablesText;
+
+    private void Awake()
+    {
+        collectable = PlayerPrefs.GetInt("NumberOfCollectable", 0);
+    }
+
+    private void Update()
+    {
+        collectablesText.text = "" + collectable;
+    }
 
     public void PauseGame()
     {

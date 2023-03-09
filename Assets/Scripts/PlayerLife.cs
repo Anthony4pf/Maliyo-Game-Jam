@@ -44,6 +44,7 @@ public class PlayerLife : MonoBehaviour
             else
             {
                 RespawnAtCheckpoint();
+                AudioManager.instance.Play("Respawn");
             }
         }
     }
