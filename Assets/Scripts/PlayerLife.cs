@@ -17,7 +17,8 @@ public class PlayerLife : MonoBehaviour
     private int playerHealth = 3;
     private int damageAmt = 1;
     [SerializeField] private GameObject fallDetector;   
-    public UnityEvent OnPlayerDeath; 
+    public UnityEvent OnPlayerDeath;
+    [SerializeField] private GameObject gameoverPanel; 
 
     private void Start()
     {
@@ -72,6 +73,9 @@ public class PlayerLife : MonoBehaviour
 
     IEnumerator RestartLevel()
     {
+        yield return new WaitForSeconds(1.0f);
+        gameoverPanel.SetActive(true);
+        
         yield return new WaitForSeconds(3.0f);
         AudioManager.instance.Play("Respawn");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

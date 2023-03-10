@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891b65fcf85af774d8de96ea398cdaf0, type: 3}
+  m_Name: StoryDialogue
+  m_EditorClassIdentifier: 
+  m_responses:
+  - In a land steeped in myths and legends, there was a time the Yoruba people worshipped
+    Sango, the god of thunder and lightning, with great reverence.
+  - But as generations passed, Sango's name faded from their lips and his memory
+    was all but forgotten. Sango was left alone, with no one to call upon him or
+    remember his mighty deeds.
+  - However, fate has a way of intervening, and when a great warrior seeks Sango's
+    blessings for a battle, the god sees a chance to make a comeback and reclaim
+    his rightful place in the pantheon.
+  - Sango possesses the warrior's body, imbuing him with his divine powers, and sends
+    him on a dangerous mission to collect sacred items from an evil forest in order
+    to perform a ritual. Only by doing so could Sango be brought back to life and
+    his power restored.
+  - With the warrior's help, the god plans to avenge himself against those who have
+    forgotten him...
