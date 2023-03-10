@@ -13,4 +13,8 @@ public class CollectibleData : ScriptableObject
     {
         countCollected = 0;
     }
+    public void OnDisable()
+    {
+        countCollected = 0;
+    }
 }

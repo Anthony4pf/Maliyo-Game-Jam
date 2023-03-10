@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PotionData
   m_EditorClassIdentifier: 
   collectibleName: Potion
-  countCollected: 2
-  countRequired: 20
+  countCollected: 0
+  countRequired: 5
