@@ -43,16 +43,15 @@ public class PlayerLife : MonoBehaviour
         {
             playerHealth -= damageAmt;
             healthSlider.value = playerHealth;
+            AudioManager.instance.Play("LifeReduce");
 
             if (playerHealth <= 0)
             {
                 OnPlayerDeath.Invoke();
-                AudioManager.instance.Play("Respawn");
             }
             else
             {
                 RespawnAtCheckpoint();
-                AudioManager.instance.Play("Respawn");
             }
         }
     }

@@ -7,6 +7,13 @@ public class LevelCompletion : MonoBehaviour
     [SerializeField] private CollectibleData[] collectibles;
     [SerializeField] private GameObject feedbackText;
     [SerializeField] private GameObject levelCompletePanel;
+    public int nextSceneLoad;
+
+    void Start()
+	{
+		nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
+	}
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -43,7 +50,11 @@ public class LevelCompletion : MonoBehaviour
     IEnumerator LevelCompletedCoroutine()
     {
         yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(nextSceneLoad);	
+		if(nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
+		{
+			PlayerPrefs.SetInt("levelAt", nextSceneLoad);
+		}
     }
     IEnumerator RemoveFeedback()
     {

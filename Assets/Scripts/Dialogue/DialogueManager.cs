@@ -9,7 +9,6 @@ public class DialogueManager : MonoBehaviour
     private string[] sentences = {"Default", "Text"};
     private int index;
 
-    [SerializeField]private GameObject nextButton;
     [SerializeField]private Animator anim;
     [SerializeField]private float typingSpeed; 
 
@@ -21,13 +20,6 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeDialogue());
     }
 
-    /*private void Update()
-    {
-        if(textDisplay.text == sentences[index])
-        {
-            nextButton.SetActive(true);
-        }
-    }*/
     IEnumerator TypeDialogue()
     {
         foreach(char letter in sentences[index].ToCharArray())
@@ -53,5 +45,9 @@ public class DialogueManager : MonoBehaviour
             textDisplay.text = "";
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+    }
+    public void SkipDialogue()
+    {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);  
     }
 }
