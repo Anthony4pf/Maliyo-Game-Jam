@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   collectibleName: Shield
-  countCollected: 0
-  countRequired: 15
+  countCollected: 1
+  countRequired: 8

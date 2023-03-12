@@ -10,9 +10,6 @@ public class PlayerLife : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
-    [SerializeField] private ParticleSystem hitImpactText;
-    [SerializeField] private ParticleSystem poisonCloudEffect;
-    [SerializeField] private ParticleSystem hitImpactEffect;
 
     private Vector2 respawnPoint;
 
@@ -47,8 +44,6 @@ public class PlayerLife : MonoBehaviour
             playerHealth -= damageAmt;
             healthSlider.value = playerHealth;
             AudioManager.instance.Play("LifeReduce");
-            hitImpactText.Play();
-            hitImpactEffect.Play();
 
             if (playerHealth <= 0)
             {
@@ -101,6 +96,5 @@ public class PlayerLife : MonoBehaviour
         transform.position = respawnPoint;
         rb.bodyType = RigidbodyType2D.Dynamic;
         sprite.enabled = true;
-        poisonCloudEffect.Play();
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Doll
   m_EditorClassIdentifier: 
   collectibleName: Doll
-  countCollected: 0
-  countRequired: 15
+  countCollected: 1
+  countRequired: 8

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Herb
   m_EditorClassIdentifier: 
   collectibleName: Herb
-  countCollected: 0
-  countRequired: 15
+  countCollected: 1
+  countRequired: 8

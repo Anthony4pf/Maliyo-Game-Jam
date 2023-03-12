@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d208ac0ef3d5c134a9bcf904a30ccd6b, type: 3}
   m_Name: Black Diamond
   m_EditorClassIdentifier: 
-  collectibleName: 
-  countCollected: 0
-  countRequired: 0
+  collectibleName: Black Diamond
+  countCollected: 1
+  countRequired: 8
