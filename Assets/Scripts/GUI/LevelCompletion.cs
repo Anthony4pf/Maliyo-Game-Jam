@@ -49,12 +49,19 @@ public class LevelCompletion : MonoBehaviour
 
     IEnumerator LevelCompletedCoroutine()
     {
-        yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene(nextSceneLoad);	
-		if(nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
-		{
-			PlayerPrefs.SetInt("levelAt", nextSceneLoad);
-		}
+        yield return new WaitForSeconds(2.0f);	
+        if(SceneManager.GetActiveScene().buildIndex == 4)
+        {
+		    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadScene(nextSceneLoad);
+		    if(nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
+		    {
+			    PlayerPrefs.SetInt("levelAt", nextSceneLoad);
+		    }
+        }
     }
     IEnumerator RemoveFeedback()
     {

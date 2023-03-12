@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Helmet
   m_EditorClassIdentifier: 
   collectibleName: Helmet
-  countCollected: 0
+  countCollected: 10
   countRequired: 10
