@@ -11,6 +11,6 @@ public class ToMenu : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
